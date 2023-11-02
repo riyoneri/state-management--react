@@ -1,31 +1,26 @@
-import React, { useState, createContext, useContext } from "react";
-
-const AppContext = createContext(null);
+import { useState } from "react";
 
 export const Parent = () => {
   const [userName, setUserName] = useState("PedroTech");
 
   return (
-    <AppContext.Provider value={{ userName, setUserName }}>
-      <div>
-        {userName}
-        <Child />
-      </div>
-    </AppContext.Provider>
+    <div>
+      {userName}
+      <Child setUserName={setUserName} />
+    </div>
   );
 };
 
-export const Child = () => {
-  return <Grandchild />;
+export const Child = ({ setUserName }) => {
+  return <GrandChild setUserName={setUserName} />;
 };
 
-export const Grandchild = () => {
-  const { setUserName } = useContext(AppContext);
+export const GrandChild = ({ setUserName }) => {
   return (
     <div>
       <button
         onClick={() => {
-          setUserName("PedroTechnologies");
+          setUserName("Lionel");
         }}
       >
         Change Username

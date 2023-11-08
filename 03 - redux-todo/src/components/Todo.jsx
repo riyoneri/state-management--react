@@ -15,7 +15,7 @@ export default function Todo({
       <span
         className={classNames([
           "h-5 w-5 bg-white rounded-full grid place-content-center cursor-pointer",
-          checked && "bg-green-400",
+          checked && "bg-green-300",
         ])}
         onClick={() => onToggleComplete(id)}
       >

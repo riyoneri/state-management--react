@@ -49,10 +49,7 @@ export default function App() {
   };
 
   const removeTodo = (id) => {
-    const currentTodos = [...todos];
-    const updatedTodos = currentTodos.filter((todo) => todo.id !== id);
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
-    setTodos(updatedTodos);
+    dispatch(todoActions.deleteTodo(id));
   };
 
   let pendingTodos = <div className="ml-4 text-sm">All tasks done</div>;

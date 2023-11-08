@@ -12,7 +12,9 @@ const todoSlice = createSlice({
         id: uuid(),
       });
     },
-    deleteTodo(state, action) {},
+    deleteTodo(state, action) {
+      return state.filter((todo) => todo.id !== action.payload);
+    },
     toggleComplete(state, action) {},
   },
 });

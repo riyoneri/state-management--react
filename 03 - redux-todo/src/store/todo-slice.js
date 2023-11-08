@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
 
+const saveTodo = (todos) => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+
 const todoSlice = createSlice({
   name: "todo",
   initialState: [],
@@ -11,13 +15,18 @@ const todoSlice = createSlice({
         text: action.payload,
         id: uuid(),
       });
+
+      saveTodo(state);
     },
     deleteTodo(state, action) {
-      return state.filter((todo) => todo.id !== action.payload);
+      const updatedState = state.filter((todo) => todo.id !== action.payload);
+      saveTodo(updatedState);
+      return updatedState;
     },
     toggleComplete(state, action) {
       const targetTodo = state.find((todo) => todo.id === action.payload);
       targetTodo.checked = !targetTodo.checked;
+      saveTodo(state);
     },
   },
 });

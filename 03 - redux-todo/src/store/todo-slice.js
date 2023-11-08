@@ -13,7 +13,7 @@ const todoSlice = createSlice({
       });
     },
     deleteTodo(state, action) {},
-    toggleCheck(state, action) {},
+    toggleComplete(state, action) {},
   },
 });
 

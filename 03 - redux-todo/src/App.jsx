@@ -40,12 +40,7 @@ export default function App() {
   };
 
   const toggleComplete = (id) => {
-    const currentTodos = [...todos];
-    const targetTodo = currentTodos.find((todo) => todo.id === id);
-    targetTodo.checked = !targetTodo.checked;
-    currentTodos.splice(id, 1, targetTodo);
-    localStorage.setItem("todos", JSON.stringify(currentTodos));
-    setTodos(currentTodos);
+    dispatch(todoActions.toggleComplete(id));
   };
 
   const removeTodo = (id) => {

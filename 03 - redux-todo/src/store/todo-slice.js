@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuid } from "uuid";
 
 const todoSlice = createSlice({
   name: "todo",
@@ -8,7 +9,7 @@ const todoSlice = createSlice({
       state.push({
         checked: false,
         text: action.payload,
-        id: state.length,
+        id: uuid(),
       });
     },
     deleteTodo(state, action) {},

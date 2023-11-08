@@ -5,9 +5,13 @@ const saveTodo = (todos) => {
   localStorage.setItem("todos", JSON.stringify(todos));
 };
 
+const getSavedTodo = () => {
+  return JSON.parse(localStorage.getItem("todos")) || [];
+};
+
 const todoSlice = createSlice({
   name: "todo",
-  initialState: [],
+  initialState: getSavedTodo(),
   reducers: {
     addTodo(state, action) {
       state.push({

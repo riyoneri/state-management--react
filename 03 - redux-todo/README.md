@@ -1,0 +1,1 @@
+This project is about Todo app with redux storage
